@@ -22,6 +22,10 @@ class Calculator {
   }
 
   chooseOperation(operation) {
+    if (operation === '-' && this.currentOperand === '') {
+      return this.currentOperand = '-';
+    }
+    
     if (this.currentOperand === '') return;
     if (this.previousOperand !== '') {
       this.compute();
@@ -79,8 +83,10 @@ class Calculator {
     const integerDigits = parseFloat(stringNumber.split('.')[0]);
     const decimalDigits = stringNumber.split('.')[1];
     let integerDisplay;
-    if (isNaN(integerDigits)) {
+    if (isNaN(integerDigits) && number !== '-') {
       integerDisplay = '';
+    } else if (number === '-') {
+      integerDisplay = '-';
     } else {
       integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
     }
