@@ -67,7 +67,11 @@ class Calculator {
         computation = prev ** current;
         break;
       case '√':
-        computation = Math.sqrt(current);
+        if (current >= 0) {
+          computation = Math.sqrt(current);
+        } else {
+          computation = 'Error';
+        }
         break;
       default:
         return;
@@ -79,6 +83,9 @@ class Calculator {
   }
 
   getDisplayNumber(number) {
+    if (number === 'Error') {
+      return 'Error';
+    }
     const stringNumber = number.toString();
     const integerDigits = parseFloat(stringNumber.split('.')[0]);
     const decimalDigits = stringNumber.split('.')[1];
