@@ -53,22 +53,28 @@ class Calculator {
     switch (this.operation) {
       case '+':
         computation = prev + current;
+        computation = +computation.toFixed(16);
         break;
       case '-':
         computation = prev - current;
+        computation = +computation.toFixed(16);
         break;
       case '*':
         computation = prev * current;
+        computation = +computation.toFixed(16);
         break;
       case '÷':
         computation = prev / current;
+        computation = +computation.toFixed(16);
         break;
       case '**':
         computation = prev ** current;
+        computation = +computation.toFixed(16);
         break;
       case '√':
         if (current >= 0) {
           computation = Math.sqrt(current);
+          computation = +computation.toFixed(16);
         } else {
           computation = 'Error';
         }
