@@ -136,12 +136,17 @@ const calculator = new Calculator(previousOperandTextElement, currentOperandText
 
 numberButtons.forEach(button => {
   button.addEventListener("click", () => {
+    if (calculator.currentOperand === '-' ||
+        calculator.currentOperand === '.') {
+          calculator.readyToReset = false;
+        }
     if(calculator.previousOperand === "" &&
       calculator.currentOperand !== "" &&
       calculator.readyToReset) {
           calculator.currentOperand = "";
           calculator.readyToReset = false;
       }
+    
     calculator.appendNumber(button.innerText);
     calculator.updateDisplay();
   })
