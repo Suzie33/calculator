@@ -25,8 +25,9 @@ class Calculator {
     if (operation === '-' && this.currentOperand === '') {
       return this.currentOperand = '-';
     }
-    
-    if (this.currentOperand === '') return;
+    if (operation === '-' && this.currentOperand === '-') return;
+    if (this.currentOperand === '' ||
+        this.currentOperand === '-') return;
     if (this.previousOperand !== '') {
       this.compute();
     }
